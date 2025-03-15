@@ -8,7 +8,6 @@ export class AuthService {
     @Inject()
     private readonly userService: UserService;
 
-    // ! ESTA LOGANDO COM QUALQUER SENHA
     async signIn(params: Prisma.UserCreateInput): Promise<Omit<User, 'password'>> {
         const user = await this.userService.user({ email: params.email })
         if (!user) throw new Error(`User not found`)
