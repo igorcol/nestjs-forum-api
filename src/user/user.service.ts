@@ -8,6 +8,10 @@ import * as bcrypt from 'bcrypt'
 export class UserService {
     constructor(private readonly prisma: PrismaService) { }
 
+    async getAll() {
+        return this.prisma.user.findMany()
+    }
+
     async user(UserWhereUniqueInput: Prisma.UserWhereUniqueInput): Promise<User | null> {
         return this.prisma.user.findUnique({
             where: UserWhereUniqueInput
